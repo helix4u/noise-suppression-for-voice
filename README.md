@@ -111,9 +111,25 @@ If you did not download and place VST sdk files - VST plugin won't be built.
 
 Compiling for x64:
 ```
-cmake -Bbuild-x64 -H. -DCMAKE_BUILD_TYPE=Release
-cd build-x64
-make 
+Get CMAKE, mingw-w64, Visual Studio (Community Edition works)
+Add ming and cmake paths to env variables
+Clone git into vstudio 
+Open vstudio dev command prompt
+(?) Run "cmake -Bbuild-x64 -H. -DCMAKE_BUILD_TYPE=Release" -- (this will fail-ish)
+Then: cd to build-x64 subdir
+Open cmake gui 
+Configure
+Generate
+  To fix the cmake erros in the previous steps, set these values in cmake after the first configure and generate
+  CMAKE_BUILD_TYPE  Release
+  CMAKE_RC_COMPILER   x86_64-w64-mingw32-windres
+ Configure
+ Generate
+Back on dev cmd run: cmake --build
+Done
+(old)cmake -Bbuild-x64 -H. -DCMAKE_BUILD_TYPE=Release
+(old)cd build-x64
+(old)make 
 ```
 
 Compiling for x32:
